@@ -10,7 +10,9 @@ Proyecto final de Ciencias de la Computación I. Es un gestor de bases de datos 
 
 El código sigue el patrón **MVC**: el modelo (`modelo`) guarda y busca los datos, el controlador (`controlador`) interpreta los comandos y las vistas (`vista`) muestran los resultados.
 
-![Interfaz gráfica con el árbol AVL](docs/img/gui_arbol.png)
+![Interfaz gráfica: búsqueda paso a paso en el árbol AVL](docs/img/gui_arbol.png)
+
+![Interfaz gráfica: resultados y plan de ejecución](docs/img/gui_resultados.png)
 
 ## Requisitos
 
@@ -27,7 +29,18 @@ Desde la carpeta del proyecto:
 mvn package                         # compila, corre las pruebas y crea target/motorbd.jar
 java -jar target/motorbd.jar        # consola (REPL)
 java -jar target/motorbd.jar --gui  # interfaz gráfica
+java -jar target/motorbd.jar --gui-clasica  # interfaz gráfica anterior (versión 1)
 ```
+
+### La interfaz gráfica
+
+- **Barra lateral:** las tablas con su número de registros e índices. Doble clic muestra todos los registros; "+ Nueva tabla" deja lista una plantilla de `CREATE TABLE`.
+- **Editor de consultas:** `Ctrl+Enter` ejecuta (una línea = un comando, o solo el texto seleccionado); `Ctrl+Arriba/Abajo` recorre el historial. Los atajos (Consultar, Insertar, Actualizar, Eliminar, Crear índice, Ver árbol) escriben un ejemplo con la tabla seleccionada.
+- **Resultados:** la tabla de filas, y abajo una insignia de color con el plan usado (índice primario, índice secundario o recorrido completo) y el tiempo.
+- **Árbol AVL:** dibujo del índice elegido, coloreado por factor de balance. "Buscar clave" resalta el camino que recorre la búsqueda y dice cuántas comparaciones hizo. Rueda del mouse: zoom; arrastrar: mover.
+- **Esquema** e **Historial** de comandos con sus respuestas.
+
+La versión anterior de la interfaz sigue disponible con `--gui-clasica` y en la rama `gui-clasica` del repositorio.
 
 Otras opciones:
 
@@ -146,7 +159,9 @@ src/main/java/com/motorbd/
 │   ├── VistaConsola.java             REPL
 │   ├── FormatoTabla.java             tablas de texto
 │   ├── VistaGrafica.java             GUI Swing (extra)
-│   └── PanelArbol.java               dibujo del árbol AVL
+│   ├── PanelArbol.java               dibujo interactivo del árbol AVL
+│   ├── Tema.java                     colores, fuentes y componentes con estilo propio
+│   └── clasica/                      interfaz gráfica anterior (--gui-clasica)
 └── herramientas/GeneradorDatasets.java
 ```
 
