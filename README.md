@@ -165,7 +165,7 @@ src/main/java/com/motorbd/
 └── herramientas/GeneradorDatasets.java
 ```
 
-La documentación técnica está en [`docs/documentacion_tecnica.pdf`](docs/documentacion_tecnica.pdf).
+La documentación técnica (formato APA) está en [`docs/documentacion_tecnica.pdf`](docs/documentacion_tecnica.pdf) y en Word en [`docs/documentacion_tecnica.docx`](docs/documentacion_tecnica.docx).
 
 ## Formato en disco
 
